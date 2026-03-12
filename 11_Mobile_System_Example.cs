@@ -369,25 +369,3 @@ public class Vibration
     }
     #endif
 }
-    
-    public static void Vibrate(long[] pattern)
-    {
-        #if UNITY_ANDROID && !UNITY_EDITOR
-            GetVibrator().Call("vibrate", pattern, -1);
-        #endif
-    }
-    
-    #if UNITY_ANDROID && !UNITY_EDITOR
-    private static AndroidJavaObject GetVibrator()
-    {
-        if (vibrator == null)
-        {
-            unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            context = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-            vibrator = new AndroidJavaClass("android.os.Vibrator");
-        }
-        return context.Call<AndroidJavaObject>("getSystemService", 
-            vibrator.GetStatic<string>("VIBRATOR_SERVICE"));
-    }
-    #endif
-}

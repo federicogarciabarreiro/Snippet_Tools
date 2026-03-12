@@ -280,23 +280,6 @@ public class SubtitleSynchronizer : MonoBehaviour
         subtitles = subtitles.OrderBy(s => s.startTime).ToArray();
     }
 }
-            {
-                if (currentSubtitleIndex != i)
-                {
-                    currentSubtitleIndex = i;
-                    subtitleText.text = subtitles[i].text;
-                }
-                return;
-            }
-        }
-        
-        if (currentSubtitleIndex != -1)
-        {
-            subtitleText.text = "";
-            currentSubtitleIndex = -1;
-        }
-    }
-}
 
 public class VideoPlayerUIController : MonoBehaviour
 {
